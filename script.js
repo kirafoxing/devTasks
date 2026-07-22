@@ -10,10 +10,12 @@ btn_addTarefa.addEventListener('click', () => {
 
     if (checkVazio == ''){
         alert('Digite uma tarefa')
+        input_tarefas.focus()
     } else {
         tarefa.textContent = input_tarefas.value
         input_tarefas.value = ''
         area_tarefas.appendChild(tarefa)
+        input_tarefas.focus()
     }
-    
+
 })
