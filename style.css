@@ -39,7 +39,7 @@ body {
     margin-bottom: 30px;
 }
 
-#titulo {
+.titulo {
     font-size: 2.8rem;
     font-weight: 700;
     background: linear-gradient(135deg, #4a6cf7, #6a3de8);
@@ -50,7 +50,7 @@ body {
     text-shadow: 0 2px 4px rgba(74, 108, 247, 0.15);
 }
 
-#sub {
+.sub {
     font-size: 1rem;
     font-weight: 400;
     color: #5b677b;
@@ -77,7 +77,7 @@ body {
     box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.02), 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
-#input_tarefas {
+.input_tarefas {
     flex: 1;
     min-width: 180px;
     padding: 14px 20px;
@@ -90,18 +90,18 @@ body {
     color: #1e293b;
 }
 
-#input_tarefas::placeholder {
+.input_tarefas::placeholder {
     color: #8e99ab;
     font-weight: 300;
 }
 
-#input_tarefas:focus {
+.input_tarefas:focus {
     outline: 2px solid #4a6cf7;
     background: #ffffff;
     box-shadow: 0 0 0 4px rgba(74, 108, 247, 0.15);
 }
 
-#btn_addTarefa {
+.btn_addTarefa {
     background: linear-gradient(135deg, #4a6cf7, #6a3de8);
     border: none;
     padding: 14px 28px;
@@ -116,13 +116,13 @@ body {
     white-space: nowrap;
 }
 
-#btn_addTarefa:hover {
+.btn_addTarefa:hover {
     transform: translateY(-2px) scale(1.02);
     box-shadow: 0 8px 20px rgba(74, 108, 247, 0.4);
     background: linear-gradient(135deg, #5a7cf7, #7a4df8);
 }
 
-#btn_addTarefa:active {
+.btn_addTarefa:active {
     transform: translateY(1px) scale(0.98);
     box-shadow: 0 2px 8px rgba(74, 108, 247, 0.2);
 }
@@ -207,7 +207,7 @@ body {
         border-radius: 24px;
     }
 
-    #titulo {
+    .titulo {
         font-size: 2.2rem;
     }
 
@@ -220,13 +220,13 @@ body {
         gap: 10px;
     }
 
-    #input_tarefas {
+    .input_tarefas {
         width: 100%;
         padding: 14px 18px;
         border-radius: 30px;
     }
 
-    #btn_addTarefa {
+    .btn_addTarefa {
         width: 100%;
         justify-content: center;
         padding: 14px;
