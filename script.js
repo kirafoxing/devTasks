@@ -15,14 +15,26 @@ const criarTarefa = function() {
         input_tarefas.focus()
     } else {
         const tarefa = document.createElement('li')
+        const deletarTarefa = document.createElement('button')
+
         tarefa.textContent = input_tarefas.value
+        deletarTarefa.textContent = '🗑️'
+        deletarTarefa.classList.add('btn_remover')
+
         input_tarefas.value = ''
+
+        tarefa.appendChild(deletarTarefa)
         area_tarefas.appendChild(tarefa)
         input_tarefas.focus()
 
         tarefa.addEventListener('click', function() {
             this.classList.toggle('concluida')
         })
+
+        deletarTarefa.addEventListener('click', () => {
+            tarefa.remove()
+        })
+        
     }
 }
 
