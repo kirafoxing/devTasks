@@ -10,7 +10,7 @@ const criarTarefa = function() {
     
     const checkVazio = input_tarefas.value.trim()
     
-    if (checkVazio === ''){
+    if (!checkVazio){
         alert('Digite uma tarefa')
         input_tarefas.focus()
     } else {
