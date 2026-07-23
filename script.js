@@ -3,7 +3,9 @@
 const input_tarefas = document.querySelector("#input_tarefas")
 const btn_addTarefa = document.querySelector("#btn_addTarefa")
 const area_tarefas = document.querySelector("#area_tarefas")
-
+const totalTarefas = document.querySelector("#totalTarefas")
+const tarefasProntas = document.querySelector("#tarefasProntas")
+const tarefasPendentes = document.querySelector("#tarefasPendentes")
 
 
 const criarTarefa = function() {
@@ -13,11 +15,13 @@ const criarTarefa = function() {
     if (!checkVazio){
         alert('Digite uma tarefa')
         input_tarefas.focus()
+
     } else {
         const tarefa = document.createElement('li')
         const deletarTarefa = document.createElement('button')
 
         tarefa.textContent = input_tarefas.value
+        
         deletarTarefa.textContent = '🗑️'
         deletarTarefa.classList.add('btn_remover')
 
@@ -35,15 +39,20 @@ const criarTarefa = function() {
         deletarTarefa.addEventListener('click', (event) => {
             event.stopPropagation()
             tarefa.remove()
-            
         })
         
     }
 }
 
+const atualizarStats = function () {
+     totalTarefas.textContent = area_tarefas.children.length
+}
+
+
 
 btn_addTarefa.addEventListener('click', () => {
     criarTarefa()
+    atualizarStats()
 })
 
 input_tarefas.addEventListener('keydown', (event) => {
