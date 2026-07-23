@@ -219,6 +219,110 @@ body {
     transform: scale(1.2);
     visibility:visible;
 }
+
+/* ------------------------------
+   Estatísticas (cards)
+------------------------------- */
+.estatistica {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 20px 0 25px;
+    padding: 8px 0;
+}
+
+.estatistica p {
+    flex: 1;
+    min-width: 100px;
+    background: #ffffffcc;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 20px;
+    padding: 12px 18px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #1e293b;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.estatistica p:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Rótulos e ícones via pseudoelementos */
+.totalTarefas::before {
+    content: "📊 Total: ";
+    font-weight: 400;
+    color: #4a6cf7;
+}
+
+.tarefasProntas::before {
+    content: "✅ Concluídas: ";
+    font-weight: 400;
+    color: #10b981;
+}
+
+.tarefasPendentes::before {
+    content: "⏳ Pendentes: ";
+    font-weight: 400;
+    color: #f97316;
+}
+
+/* Destacar o número */
+.estatistica p {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.estatistica p .numero {
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-left: 4px;
+}
+
+/* Cores de fundo sutis para cada card (opcional) */
+.totalTarefas {
+    background: #eef2ff !important;
+    border-color: #c7d2fe !important;
+}
+
+.tarefasProntas {
+    background: #ecfdf5 !important;
+    border-color: #a7f3d0 !important;
+}
+
+.tarefasPendentes {
+    background: #fffbeb !important;
+    border-color: #fde68a !important;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .estatistica {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .estatistica p {
+        justify-content: center;
+        padding: 10px 14px;
+        font-size: 0.95rem;
+    }
+
+    .estatistica p .numero {
+        font-size: 1.2rem;
+    }
+}
 /* ------------------------------
    Responsividade
 ------------------------------- */
