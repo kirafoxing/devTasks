@@ -29,10 +29,13 @@ const criarTarefa = function() {
 
         tarefa.addEventListener('click', function() {
             this.classList.toggle('concluida')
+            
         })
 
-        deletarTarefa.addEventListener('click', () => {
+        deletarTarefa.addEventListener('click', (event) => {
+            event.stopPropagation()
             tarefa.remove()
+            
         })
         
     }
