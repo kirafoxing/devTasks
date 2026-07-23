@@ -8,6 +8,7 @@ const tarefasProntas = document.querySelector("#tarefasProntas")
 const tarefasPendentes = document.querySelector("#tarefasPendentes")
 
 
+
 const criarTarefa = function() {
     
     const checkVazio = input_tarefas.value.trim()
@@ -33,21 +34,38 @@ const criarTarefa = function() {
 
         tarefa.addEventListener('click', function() {
             this.classList.toggle('concluida')
+            atualizarStats()
             
         })
 
         deletarTarefa.addEventListener('click', (event) => {
             event.stopPropagation()
             tarefa.remove()
+            atualizarStats()
         })
         
     }
 }
 
 const atualizarStats = function () {
-     totalTarefas.textContent = area_tarefas.children.length
-}
 
+    let prontas = 0
+    let pendentes = 0
+    
+    totalTarefas.textContent = area_tarefas.children.length
+    
+    for (let checkConcluida of area_tarefas.children) {
+        if (checkConcluida.classList.contains('concluida')) {
+            prontas++
+        } else {
+            pendentes++
+        }
+    }
+
+    tarefasPendentes.textContent = pendentes
+    tarefasProntas.textContent = prontas
+
+}
 
 
 btn_addTarefa.addEventListener('click', () => {
