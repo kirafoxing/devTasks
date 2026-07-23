@@ -5,6 +5,7 @@ const btn_addTarefa = document.querySelector("#btn_addTarefa")
 const area_tarefas = document.querySelector("#area_tarefas")
 
 
+
 const criarTarefa = function() {
     
     const checkVazio = input_tarefas.value.trim()
@@ -18,9 +19,13 @@ const criarTarefa = function() {
         input_tarefas.value = ''
         area_tarefas.appendChild(tarefa)
         input_tarefas.focus()
+
+        tarefa.addEventListener('click', function() {
+            this.classList.toggle('concluida')
+        })
     }
-    
 }
+
 
 btn_addTarefa.addEventListener('click', () => {
     criarTarefa()
