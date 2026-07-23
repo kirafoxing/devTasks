@@ -5,15 +5,15 @@ const btn_addTarefa = document.querySelector("#btn_addTarefa")
 const area_tarefas = document.querySelector("#area_tarefas")
 
 
-const criacaoTarefa = function() {
+const criarTarefa = function() {
     
-    const tarefa = document.createElement('li')
     const checkVazio = input_tarefas.value.trim()
     
-    if (checkVazio == ''){
+    if (checkVazio === ''){
         alert('Digite uma tarefa')
         input_tarefas.focus()
     } else {
+        const tarefa = document.createElement('li')
         tarefa.textContent = input_tarefas.value
         input_tarefas.value = ''
         area_tarefas.appendChild(tarefa)
@@ -23,12 +23,12 @@ const criacaoTarefa = function() {
 }
 
 btn_addTarefa.addEventListener('click', () => {
-    criacaoTarefa()
+    criarTarefa()
 })
 
 input_tarefas.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
-        criacaoTarefa()
+        criarTarefa()
         event.preventDefault()
     }
 })
