@@ -182,10 +182,6 @@ body {
     box-shadow: 0 0 0 2px rgba(74, 108, 247, 0.15);
 }
 
-/* Cores alternadas para os círculos (apenas para variar) */
-.area_tarefas li:nth-child(1)::before { background: #f97316; }
-.area_tarefas li:nth-child(2)::before { background: #10b981; }
-.area_tarefas li:nth-child(3)::before { background: #8b5cf6; }
 
 .area_tarefas li:hover {
     background: #fafbff;
@@ -196,6 +192,12 @@ body {
 
 .area_tarefas li:last-child {
     margin-bottom: 0;
+}
+
+.area_tarefas li.concluida {
+    background-color: #10b981;
+    text-decoration: line-through;
+    color: white;
 }
 
 /* ------------------------------
