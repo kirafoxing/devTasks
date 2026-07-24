@@ -170,6 +170,14 @@ body {
     cursor: default;
 }
 
+.area_tarefas li .acoes_tarefa {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;      /* empurra para a direita */
+    flex-shrink: 0;
+}
+
 /* Pequeno círculo colorido antes de cada tarefa (estilo Trello) */
 .area_tarefas li::before {
     content: "";
@@ -201,23 +209,35 @@ body {
 }
 
 
-.area_tarefas li .btn_remover {
-    margin-left: auto;        
+.area_tarefas li .btn_remover,
+.area_tarefas li .btn_editar {
     background: transparent;
     border: none;
-    color: #94a3b8;
     font-size: 1.2rem;
     cursor: pointer;
     padding: 0 4px;
     transition: all 0.2s ease;
-    flex-shrink: 0;           
     line-height: 1;
-    visibility: hidden;
+    visibility: hidden;     /* escondidos por padrão */
+    opacity: 0;
 }
 
-.area_tarefas li:hover .btn_remover {
+.area_tarefas li:hover .btn_remover,
+.area_tarefas li:hover .btn_editar {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Cores específicas no hover */
+.area_tarefas li .btn_remover:hover {
+    color: #ef4444;         /* vermelho para deletar */
     transform: scale(1.2);
-    visibility:visible;
+}
+
+.area_tarefas li .btn_editar:hover {
+    color: #4a6cf7;         /* azul para editar */
+    transform: scale(1.2);
 }
 
 /* ------------------------------
