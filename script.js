@@ -10,53 +10,71 @@ const tarefasPendentes = document.querySelector("#tarefasPendentes")
 
 
 const criarTarefa = function() {
-    
     const checkVazio = input_tarefas.value.trim()
     
-    if (!checkVazio){
+    if (!checkVazio) {
         alert('Digite uma tarefa')
         input_tarefas.focus()
-
-    } else {
-        const tarefaHolder = document.createElement('li')
-        const tarefaTexto = document.createElement('span')
-        const deletarTarefa = document.createElement('button')
-        const editarTarefa = document.createElement('button')
-
-        tarefaTexto.textContent = input_tarefas.value
-        
-        editarTarefa.textContent = '✏️'
-        deletarTarefa.textContent = '🗑️'
-        
-        deletarTarefa.classList.add('btn_remover')
-
-        input_tarefas.value = ''
-        
-        tarefaHolder.appendChild(tarefaTexto)
-        tarefaHolder.appendChild(deletarTarefa)
-        tarefaHolder.appendChild(editarTarefa)
-        area_tarefas.appendChild(tarefaHolder)
-        input_tarefas.focus()
-
-        tarefaHolder.addEventListener('click', function() {
-            this.classList.toggle('concluida')
-            atualizarStats()
-            
-        })
-
-        deletarTarefa.addEventListener('click', (event) => {
-            event.stopPropagation()
-            tarefaHolder.remove()
-            atualizarStats()
-        })
-
-        editarTarefa.addEventListener('click', function(event) {
-           event.stopPropagation()
-           tarefaTexto.textContent = prompt()
-        
-        })
-        
+        return
     }
+
+    
+    const tarefaHolder = document.createElement('li')
+    const tarefaTexto = document.createElement('span')
+    tarefaTexto.textContent = input_tarefas.value
+
+    
+    const acoes = document.createElement('div')
+    acoes.classList.add('acoes_tarefa')
+
+    const editarTarefa = document.createElement('button')
+    editarTarefa.textContent = '✏️'
+    editarTarefa.classList.add('btn_editar')
+
+    const deletarTarefa = document.createElement('button')
+    deletarTarefa.textContent = '🗑️'
+    deletarTarefa.classList.add('btn_remover')
+
+    
+    acoes.appendChild(editarTarefa)
+    acoes.appendChild(deletarTarefa)
+
+    tarefaHolder.appendChild(tarefaTexto)
+    tarefaHolder.appendChild(acoes);  
+    area_tarefas.appendChild(tarefaHolder)
+
+    input_tarefas.value = ''
+    input_tarefas.focus()
+
+   
+    tarefaHolder.addEventListener('click', function(e) {
+        if (e.target.closest('button')) return
+        this.classList.toggle('concluida')
+        atualizarStats();
+    })
+
+    
+    deletarTarefa.addEventListener('click', (event) => {
+        event.stopPropagation()
+        tarefaHolder.remove()
+        atualizarStats()
+    });
+
+    
+    editarTarefa.addEventListener('click', function(event) {
+        event.stopPropagation()
+        const novoTexto = prompt('Editar tarefa:', tarefaTexto.textContent)
+        if (novoTexto !== null) { 
+            const textoEditado = novoTexto.trim()
+            if (textoEditado === '') {
+                alert('A tarefa não pode ficar vazia!')
+            } else {
+                tarefaTexto.textContent = textoEditado
+            }
+        }
+    })
+
+    atualizarStats()
 }
 
 const atualizarStats = function () {
