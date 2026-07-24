@@ -7,9 +7,9 @@ const totalTarefas = document.querySelector("#totalTarefas")
 const tarefasProntas = document.querySelector("#tarefasProntas")
 const tarefasPendentes = document.querySelector("#tarefasPendentes")
 
+let filtroAtual = 'filtro_total'
 
-
-const criarTarefa = function() {
+function criarTarefa() {
     const checkVazio = input_tarefas.value.trim()
     
     if (!checkVazio) {
@@ -40,7 +40,7 @@ const criarTarefa = function() {
     acoes.appendChild(deletarTarefa)
 
     tarefaHolder.appendChild(tarefaTexto)
-    tarefaHolder.appendChild(acoes);  
+    tarefaHolder.appendChild(acoes)
     area_tarefas.appendChild(tarefaHolder)
 
     input_tarefas.value = ''
@@ -50,7 +50,7 @@ const criarTarefa = function() {
     tarefaHolder.addEventListener('click', function(e) {
         if (e.target.closest('button')) return
         this.classList.toggle('concluida')
-        atualizarStats();
+        atualizarStats()
     })
 
     
@@ -75,10 +75,10 @@ const criarTarefa = function() {
     })
 
     atualizarStats()
+    filtrarTarefas(filtroAtual)
 }
 
-const atualizarStats = function () {
-
+function atualizarStats() {
     let prontas = 0
     let pendentes = 0
 
@@ -97,6 +97,34 @@ const atualizarStats = function () {
 
 }
 
+function filtrarTarefas(filtro) {
+    area_tarefas.classList.remove('filtro_total', 'filtro_concluidas', 'filtro_pendentes')
+
+    if (filtro === 'filtro_total') {
+        area_tarefas.classList.add('filtro_total')
+    } else if (filtro === 'filtro_concluidas') {
+        area_tarefas.classList.add('filtro_concluidas')
+    } else if (filtro === 'filtro_pendentes') {
+        area_tarefas.classList.add('filtro_pendentes')
+    }
+
+    filtroAtual = filtro
+
+    document.querySelectorAll('.estatistica button').forEach(btn => btn.classList.remove('ativo'))
+
+    if (filtro === 'filtro_total') {
+        totalTarefas.classList.add('ativo')
+    } else if (filtro === 'filtro_concluidas') {
+        tarefasProntas.classList.add('ativo')
+    } else if (filtro === 'filtro_pendentes') {
+        tarefasPendentes.classList.add('ativo');
+    }
+    
+}
+
+totalTarefas.addEventListener('click', () => filtrarTarefas('filtro_total'))
+tarefasProntas.addEventListener('click', () => filtrarTarefas('filtro_concluidas'))
+tarefasPendentes.addEventListener('click', () => filtrarTarefas('filtro_pendentes'))
 
 btn_addTarefa.addEventListener('click', () => {
     criarTarefa()
