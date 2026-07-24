@@ -6,6 +6,7 @@ const area_tarefas = document.querySelector("#area_tarefas")
 const totalTarefas = document.querySelector("#totalTarefas")
 const tarefasProntas = document.querySelector("#tarefasProntas")
 const tarefasPendentes = document.querySelector("#tarefasPendentes")
+const buscaTarefas = document.querySelector('#buscaTarefas')
 
 let filtroAtual = 'filtro_total'
 
@@ -122,6 +123,21 @@ function filtrarTarefas(filtro) {
     
 }
 
+function procurarTarefas() {
+    const termo = buscaTarefas.value.trim().toLowerCase()
+    
+    for (let li of area_tarefas.children) {
+        const texto = li.querySelector('span').textContent.toLowerCase()
+
+        if (texto.includes(termo)){
+            li.classList.remove('oculta')
+        } else {
+            li.classList.add('oculta')
+        }
+    }
+
+}
+
 totalTarefas.addEventListener('click', () => filtrarTarefas('filtro_total'))
 tarefasProntas.addEventListener('click', () => filtrarTarefas('filtro_concluidas'))
 tarefasPendentes.addEventListener('click', () => filtrarTarefas('filtro_pendentes'))
@@ -129,6 +145,13 @@ tarefasPendentes.addEventListener('click', () => filtrarTarefas('filtro_pendente
 btn_addTarefa.addEventListener('click', () => {
     criarTarefa()
     atualizarStats()
+})
+
+buscaTarefas.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        procurarTarefas()
+        event.preventDefault()
+    }
 })
 
 input_tarefas.addEventListener('keydown', (event) => {
