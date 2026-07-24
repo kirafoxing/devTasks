@@ -435,3 +435,46 @@ body {
         font-size: 0.95rem;
     }
 }
+
+/* ------------------------------
+   Barra de busca
+------------------------------- */
+.busca {
+    margin: 15px 0 20px;
+    padding: 0 4px;
+}
+
+.input_busca {
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 40px;
+    font-size: 1rem;
+    background: #f1f4fa;
+    outline: 2px solid transparent;
+    transition: all 0.25s ease;
+    color: #1e293b;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.input_busca::placeholder {
+    color: #8e99ab;
+    font-weight: 300;
+}
+
+.input_busca:focus {
+    outline: 2px solid #4a6cf7;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(74, 108, 247, 0.15);
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .busca {
+        margin: 10px 0 15px;
+    }
+    .input_busca {
+        padding: 12px 16px;
+        font-size: 0.95rem;
+    }
+}
