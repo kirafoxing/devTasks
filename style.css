@@ -468,6 +468,10 @@ body {
     box-shadow: 0 0 0 4px rgba(74, 108, 247, 0.15);
 }
 
+.oculta {
+    display: none !important;
+}
+
 /* Responsivo */
 @media (max-width: 600px) {
     .busca {
