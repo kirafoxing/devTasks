@@ -18,21 +18,27 @@ const criarTarefa = function() {
         input_tarefas.focus()
 
     } else {
-        const tarefa = document.createElement('li')
+        const tarefaHolder = document.createElement('li')
+        const tarefaTexto = document.createElement('span')
         const deletarTarefa = document.createElement('button')
+        const editarTarefa = document.createElement('button')
 
-        tarefa.textContent = input_tarefas.value
+        tarefaTexto.textContent = input_tarefas.value
         
+        editarTarefa.textContent = '✏️'
         deletarTarefa.textContent = '🗑️'
+        
         deletarTarefa.classList.add('btn_remover')
 
         input_tarefas.value = ''
-
-        tarefa.appendChild(deletarTarefa)
-        area_tarefas.appendChild(tarefa)
+        
+        tarefaHolder.appendChild(tarefaTexto)
+        tarefaHolder.appendChild(deletarTarefa)
+        tarefaHolder.appendChild(editarTarefa)
+        area_tarefas.appendChild(tarefaHolder)
         input_tarefas.focus()
 
-        tarefa.addEventListener('click', function() {
+        tarefaHolder.addEventListener('click', function() {
             this.classList.toggle('concluida')
             atualizarStats()
             
@@ -40,8 +46,14 @@ const criarTarefa = function() {
 
         deletarTarefa.addEventListener('click', (event) => {
             event.stopPropagation()
-            tarefa.remove()
+            tarefaHolder.remove()
             atualizarStats()
+        })
+
+        editarTarefa.addEventListener('click', function(event) {
+           event.stopPropagation()
+           tarefaTexto.textContent = prompt()
+        
         })
         
     }
@@ -51,7 +63,7 @@ const atualizarStats = function () {
 
     let prontas = 0
     let pendentes = 0
-    
+
     totalTarefas.textContent = area_tarefas.children.length
     
     for (let checkConcluida of area_tarefas.children) {
