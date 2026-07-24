@@ -253,9 +253,9 @@ body {
 }
 
 .estatistica button {
-    /* Reset completo de aparência de botão */
-    all: unset;                   /* remove todas as propriedades padrão */
-    display: flex;                /* restaura o display flex */
+   
+    all: unset;                   
+    display: flex;                
     align-items: center;
     justify-content: center;
     gap: 8px;
@@ -273,7 +273,7 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.6);
     transition: all 0.2s ease;
-    cursor: default;              /* não parece clicável, a menos que você adicione evento depois */
+    cursor: default;              
     text-align: center;
 }
 
@@ -282,7 +282,7 @@ body {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
 }
 
-/* Ícones e rótulos via pseudoelementos */
+
 .totalTarefas::before {
     content: "📊 Total: ";
     font-weight: 400;
@@ -301,7 +301,7 @@ body {
     color: #f97316;
 }
 
-/* Cores de fundo sutis para cada card */
+
 .totalTarefas {
     background: #eef2ff !important;
     border-color: #c7d2fe !important;
@@ -317,11 +317,61 @@ body {
     border-color: #fde68a !important;
 }
 
-/* Número em destaque (opcional) */
+
 .estatistica button .numero {
     font-weight: 700;
     font-size: 1.6rem;
     margin-left: 4px;
+}
+
+/* ------------------------------
+   Filtros (exibição condicional)
+------------------------------- */
+/* Estado padrão: todos visíveis */
+.area_tarefas.filtro_total li {
+    display: flex; /* ou o display que você usa */
+}
+
+/* Filtrar concluídas: oculta as não concluídas */
+.area_tarefas.filtro_concluidas li:not(.concluida) {
+    display: none !important;
+}
+
+/* Filtrar pendentes: oculta as concluídas */
+.area_tarefas.filtro_pendentes li.concluida {
+    display: none !important;
+}
+
+/* (Opcional) Transição suave ao filtrar */
+.area_tarefas li {
+    transition: opacity 0.3s ease;
+}
+.area_tarefas.filtro_concluidas li:not(.concluida),
+.area_tarefas.filtro_pendentes li.concluida {
+    opacity: 0;
+    display: none !important; /* garante que some */
+}
+
+/* Botão ativo (filtro selecionado) */
+.estatistica button.ativo {
+    border: 2px solid #4a6cf7 !important;
+    box-shadow: 0 0 0 4px rgba(74, 108, 247, 0.2) !important;
+    transform: translateY(-2px);
+    background: #ffffff !important; /* para manter contraste */
+}
+
+/* Ajuste de cor de fundo para cada botão ativo (opcional) */
+.totalTarefas.ativo {
+    background: #dbeafe !important; /* azul mais forte */
+    border-color: #3b82f6 !important;
+}
+.tarefasProntas.ativo {
+    background: #d1fae5 !important; /* verde mais forte */
+    border-color: #10b981 !important;
+}
+.tarefasPendentes.ativo {
+    background: #fef3c7 !important; /* amarelo mais forte */
+    border-color: #f59e0b !important;
 }
 
 /* Responsividade */
