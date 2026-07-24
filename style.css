@@ -241,7 +241,7 @@ body {
 }
 
 /* ------------------------------
-   Estatísticas (cards)
+   Estatísticas (cards com botões)
 ------------------------------- */
 .estatistica {
     display: flex;
@@ -252,33 +252,37 @@ body {
     padding: 8px 0;
 }
 
-.estatistica p {
+.estatistica button {
+    /* Reset completo de aparência de botão */
+    all: unset;                   /* remove todas as propriedades padrão */
+    display: flex;                /* restaura o display flex */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
     flex: 1;
     min-width: 100px;
     background: #ffffffcc;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border-radius: 20px;
-    padding: 12px 18px;
-    text-align: center;
-    font-weight: 500;
-    font-size: 1rem;
+    padding: 14px 18px;
+    font-weight: 600;
+    font-size: 1.2rem;
     color: #1e293b;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.6);
     transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+    cursor: default;              /* não parece clicável, a menos que você adicione evento depois */
+    text-align: center;
 }
 
-.estatistica p:hover {
+.estatistica button:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
 }
 
-/* Rótulos e ícones via pseudoelementos */
+/* Ícones e rótulos via pseudoelementos */
 .totalTarefas::before {
     content: "📊 Total: ";
     font-weight: 400;
@@ -297,19 +301,7 @@ body {
     color: #f97316;
 }
 
-/* Destacar o número */
-.estatistica p {
-    font-weight: 600;
-    font-size: 1.1rem;
-}
-
-.estatistica p .numero {
-    font-weight: 700;
-    font-size: 1.4rem;
-    margin-left: 4px;
-}
-
-/* Cores de fundo sutis para cada card (opcional) */
+/* Cores de fundo sutis para cada card */
 .totalTarefas {
     background: #eef2ff !important;
     border-color: #c7d2fe !important;
@@ -325,6 +317,13 @@ body {
     border-color: #fde68a !important;
 }
 
+/* Número em destaque (opcional) */
+.estatistica button .numero {
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-left: 4px;
+}
+
 /* Responsividade */
 @media (max-width: 600px) {
     .estatistica {
@@ -333,14 +332,14 @@ body {
         gap: 10px;
     }
 
-    .estatistica p {
+    .estatistica button {
         justify-content: center;
-        padding: 10px 14px;
-        font-size: 0.95rem;
+        padding: 12px 14px;
+        font-size: 1rem;
     }
 
-    .estatistica p .numero {
-        font-size: 1.2rem;
+    .estatistica button .numero {
+        font-size: 1.3rem;
     }
 }
 /* ------------------------------
